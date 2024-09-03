@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Toggle Task Completion</title>
+    
+    <!-- Include Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        /* Custom styles */
+        body {
+            background-color: #343a40; /* Dark background color */
+            color: #f8f9fa; /* Light text color */
+        }
+
+        .box {
+            background-color: #ffffff; /* White background for the box */
+            color: #343a40; /* Dark text color */
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .btn-primary {
+            background-color: #007bff; /* Blue button color */
+            border-color: #007bff;
+        }
+
+        .btn-secondary {
+            background-color: #6c757d; /* Gray button color */
+            border-color: #6c757d;
+        }
+
+        .btn-primary:hover {
+            background-color: #0056b3; /* Darker blue on hover */
+            border-color: #004085;
+        }
+
+        .btn-secondary:hover {
+            background-color: #5a6268; /* Darker gray on hover */
+            border-color: #4e555b;
+        }
+    </style>
+</head>
+<body>
+    <div class="container d-flex justify-content-center align-items-center min-vh-100">
+        <div class="box">
+            <h2 class="text-center mb-4">Toggle Completion Status</h2>
+            <p class="text-center">
+                Are you sure you want to {% if task.completed %} mark "{{ task.name }}" as Incomplete {% else %} mark "{{ task.name }}" as Completed {% endif %}?
+            </p>
+            
+            <form method="post" class="text-center">
+                {% csrf_token %}
+                <button type="submit" class="btn btn-primary">Yes, toggle status</button>
+                <a href="{% url 'task_list' %}" class="btn btn-secondary">Cancel</a>
+            </form>
+        </div>
+    </div>
+    
+    <!-- Include jQuery, Popper.js, and Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
+
